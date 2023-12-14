@@ -1,10 +1,10 @@
 const request = require('request');
 const apiUrl = 'https://api.thecatapi.com/v1/breeds/search?';
 
-const breedFetcher = function(breedName) {
+const fetchBreedDescription = function(breedName, callback) {
   const url = apiUrl + 'q=' + breedName;
   
-  request(url, (error, response, body) => {
+  request.get(url, (error, response, body) => {
     if (error) {
       console.log('error:', error);
 
@@ -24,5 +24,4 @@ const breedFetcher = function(breedName) {
   });
 };
 
-// breedFetcher('Siberian');
-breedFetcher(process.argv[2]);
+module.exports = { fetchBreedDescription };
