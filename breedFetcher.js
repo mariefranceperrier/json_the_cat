@@ -24,4 +24,5 @@ const breedFetcher = function(breedName) {
   });
 };
 
-breedFetcher('Siberian');
+// breedFetcher('Siberian');
+breedFetcher(process.argv[2]);
