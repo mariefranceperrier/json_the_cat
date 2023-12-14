@@ -6,19 +6,19 @@ const fetchBreedDescription = function(breedName, callback) {
   
   request.get(url, (error, response, body) => {
     if (error) {
-      console.log('error:', error);
+      callback(error, null);
 
     } else if (response.statusCode !== 200) {
-      console.log('statusCode:', response && response.statusCode);
+      callback(error, null);
 
     } else {
       const data = JSON.parse(body);
 
       if (data.length === 0) {
-        console.log('Breed not found');
+        callback('Breed not found', null);
 
       } else {
-        console.log(data[0].description);
+        callback(null, data[0].description);
       }
     }
   });
